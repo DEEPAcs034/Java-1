@@ -1,28 +1,62 @@
-import java.util.Scanner;
-    public class D2{
-        public static void main(String[] args){
-            int N = Integer.parseInt(args[0]);
-            int[][] matrix1=new int[N][N];
-            int[][] matrix2=new int[N][N];
-            Scanner scanner = new  Scanner(System.in);
-            System.out.println("enter the elements of the first matrix:");
-                for(int i=0;i<N;i++){
-                    for(int j=0;j<N;j++){
-                        matrix1[i][j]=scanner.nextInt();}}
-            System.out.println("enter the elements of the second matrix:");
-                for(int i=0;i<N;i++){
-                    for(int j=0;j<N;j++){
-                        matrix2[i][j]=scanner.nextInt();}}
-           int[][] sumMatrix=new int[N][N];
-            for(int i=0;i<N;i++){
-                for(int j=0;j<N;j++){
-                    sumMatrix[i][j]=matrix1[i][j]+matrix2[i][j];}}
-           System.out.println("the sum of the two matrices is:");
-            for(int i=0;i<N;i++){
-                for(int j=0;j<N;j++){
-                    System.out.print(sumMatrix[i][j]+" ");
-                    }
-                 System.out.println();
-}
-}
-}
+
+package pkg1;
+import java.util.Scanner ;
+class  Stack{
+    int top;
+    int stk[]=new int[10];
+    Stack(){
+        top=-1;}
+    void push(int item){
+        if(stk.length-1==top){
+            System.out.println("stack overflow");}
+        else{
+            top=top+1;
+            stk[top]=item;}}
+    void pop(){
+        if(top==-1){
+            System.out.println("Stack underflow");}
+        else{
+            int item=stk[top];
+            System.out.println("Item popped is: " +item);
+      top=top-1;}}
+  void display(){
+    if(top==-1){
+      System.out.println("Stack is empty. No items to display");}
+    else{
+      System.out.println("Items in the stack are ");
+      for(int i=top;i>=0;i--){
+System.out.println(stk[i]);}}}}
+     
+       
+public class D2{
+  public static void main(String[] args){
+    int ch;
+    Stack stack1=new Stack();
+    Scanner sc1=new Scanner(System.in);
+    while(true){
+      System.out.println("1: Push  2: Pop  3:Display  4:Exit");
+      ch=sc1.nextInt();
+      switch(ch){
+        case 1:
+          System.out.println("Enter the items to be pushed");
+          int item=sc1.nextInt();
+          stack1.push(item);
+        break;
+        
+        case 2: 
+          stack1.pop();
+          break;
+        
+        case 3:
+          stack1.display();
+          break;
+        
+        case 4: 
+          System.exit(0);  
+          
+        default: 
+          System.out.println("Enter the valid choice");
+        }  
+     }  
+  }  
+}  
